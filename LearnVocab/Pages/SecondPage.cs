@@ -23,6 +23,10 @@ public sealed partial class SecondPage : Page
                     new TextBlock()
                         .Text("2 PAGE")
                         .HorizontalAlignment(HorizontalAlignment.Center)
+                        .VerticalAlignment(VerticalAlignment.Center),
+                    new TextBlock()
+                        .Text("To be added...")
+                        .HorizontalAlignment(HorizontalAlignment.Center)
                         .VerticalAlignment(VerticalAlignment.Center)
                 )
             )

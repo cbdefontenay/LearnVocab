@@ -7,6 +7,7 @@ public sealed partial class MainPage : Page
         this.DataContext<BindableMainModel>((page, vm) => page
             .NavigationCacheMode(NavigationCacheMode.Required)
             .Content(new Grid()
+                .Region(attached: true)
                 .SafeArea(SafeArea.InsetMask.Bottom)
                 .RowDefinitions("Auto,*")
                 .Children(
@@ -20,6 +21,7 @@ public sealed partial class MainPage : Page
                         ),
                     new StackPanel()
                         .Grid(row: 0)
+                        .Margin(margin: new Thickness(0, 100))
                         .HorizontalAlignment(HorizontalAlignment.Center)
                         .VerticalAlignment(VerticalAlignment.Center)
                         .Spacing(16)
@@ -34,17 +36,19 @@ public sealed partial class MainPage : Page
                         ),
                     new TabBar()
                         .Grid(row: 1)
+                        .Region(attached: true)
                         .Style(StaticResource.Get<Style>("BottomTabBarStyle"))
                         .Items(
                             new TabBarItem().Content("Home")
-                                .Command(() => vm.GoToMainPage)
+                                .Region().Name("Main")
                                 .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle")),
                             new TabBarItem().Content("Second")
-                                .Command(() => vm.GoToSecondPage)
+                                .Region().Name("Second")
                                 .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle")),
                             new TabBarItem().Content("Vocab")
-                                .Command(() => vm.GoToVocabPage)
-                                .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle"))
+                                .Region().Name("Vocab")
+                                .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle")
+                                )
                         )
                 )
             )

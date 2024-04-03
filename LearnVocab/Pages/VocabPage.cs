@@ -12,7 +12,11 @@ public sealed partial class VocabPage : Page
                     .Children(
                         new TextBlock()
                             .Grid(row: 0)
-                            .Text(() => vm.Name)
+                            .Text(() => vm.Name),
+                        new TextBlock()
+                            .Text("Content to be added...")
+                            .HorizontalAlignment(HorizontalAlignment.Center)
+                            .VerticalAlignment(VerticalAlignment.Center)
                     )
             )
         );

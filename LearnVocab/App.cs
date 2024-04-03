@@ -80,15 +80,15 @@ public class App : Application
                     new RouteMap("Second", View: views.FindByViewModel<SecondModel>()),
                     new RouteMap("Vocab", View: views.FindByViewModel<VocabModel>())
                 ]
-            ),
-            new RouteMap("", View: views.FindByView<MainPage>(),
-                Nested:
-                [
-                    new RouteMap("Mains", View: views.FindByView<MainPage>()),
-                    new RouteMap("Seconds", View: views.FindByView<SecondPage>()),
-                    new RouteMap("Vocabs", View: views.FindByView<VocabPage>())
-                ]
             )
+            // new RouteMap("", View: views.FindByView<MainPage>(),
+            //     Nested:
+            //     [
+            //         new RouteMap("Mains", View: views.FindByView<MainPage>()),
+            //         new RouteMap("Seconds", View: views.FindByView<SecondPage>()),
+            //         new RouteMap("Vocabs", View: views.FindByView<VocabPage>())
+            //     ]
+            // )
         );
     }
 }
