@@ -12,10 +12,9 @@ public sealed partial class MainPage : Page
                 .Children(
                     new NavigationBar()
                         .Content(() => vm.Title)
-                        .MainCommandMode(MainCommandMode.Action)
                         .MainCommand(new AppBarButton()
                             .Icon(new BitmapIcon().UriSource(
-                                    new Uri("ms-appx:///LearnVocab/Assets/Icons/hamburger.png")
+                                    new Uri("ms-appx:///LearnVocab/Assets/Icons/home.png")
                                 )
                             )
                         ),
@@ -32,6 +31,20 @@ public sealed partial class MainPage : Page
                                 .Content("Go to Second Page")
                                 .AutomationProperties(automationId: "SecondPageButton")
                                 .Command(() => vm.GoToSecond)
+                        ),
+                    new TabBar()
+                        .Grid(row: 1)
+                        .Style(StaticResource.Get<Style>("BottomTabBarStyle"))
+                        .Items(
+                            new TabBarItem().Content("Home")
+                                .Command(() => vm.GoToMainPage)
+                                .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle")),
+                            new TabBarItem().Content("Second")
+                                .Command(() => vm.GoToSecondPage)
+                                .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle")),
+                            new TabBarItem().Content("Vocab")
+                                .Command(() => vm.GoToVocabPage)
+                                .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle"))
                         )
                 )
             )
