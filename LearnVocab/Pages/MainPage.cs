@@ -1,4 +1,6 @@
-﻿namespace LearnVocab.Pages;
+using ToolkitTheme = Uno.Toolkit.UI.Markup.Theme;
+
+namespace LearnVocab.Pages;
 
 public sealed partial class MainPage : Page
 {
@@ -9,47 +11,21 @@ public sealed partial class MainPage : Page
             .Content(new Grid()
                 .Region(attached: true)
                 .SafeArea(SafeArea.InsetMask.None)
-                .RowDefinitions("Auto,*")
+                .RowDefinitions("*,Auto")
                 .Children(
-                    new NavigationBar()
-                        .Content(() => vm.Title)
-                        .MainCommand(new AppBarButton()
-                            .Icon(new BitmapIcon().UriSource(
-                                    new Uri("ms-appx:///LearnVocab/Assets/Icons/home.png")
-                                )
-                            )
-                        ),
-                    new StackPanel()
-                        .Grid(row: 0)
-                        .Margin(margin: new Thickness(0, 100))
-                        .HorizontalAlignment(HorizontalAlignment.Center)
-                        .VerticalAlignment(VerticalAlignment.Center)
-                        .Spacing(16)
-                        .Children(
-                            new TextBox()
-                                .Text(x => x.Bind(() => vm.Name).Mode(BindingMode.TwoWay)
-                                )
-                                .PlaceholderText("Enter your Folder name:"),
-                            new Button()
-                                .Content("Go to Folder Page")
-                                .AutomationProperties(automationId: "SecondPageButton")
-                                .Command(() => vm.GoToSecond)
-                        ),
+                    new Grid()
+                        .Region(attached: true, navigator: "Visibility"),
                     new TabBar()
                         .Grid(row: 1)
                         .Region(attached: true)
-                        .Style(StaticResource.Get<Style>("BottomTabBarStyle"))
+                        .Style(ToolkitTheme.TabBar.Styles.Bottom)
                         .Items(
                             new TabBarItem().Content("Home")
-                                .Region().Name("Main")
-                                .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle")),
+                                .Region(name: "Home"),
                             new TabBarItem().Content("Folder")
-                                .Region().Name("Folder")
-                                .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle")),
+                                .Region(name: "Folder"),
                             new TabBarItem().Content("Vocab")
-                                .Region().Name("Vocab")
-                                .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle")
-                                )
+                                .Region(name: "Vocab")
                         )
                 )
             )

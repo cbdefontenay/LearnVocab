@@ -1,6 +1,6 @@
 using LearnVocab.Models;
-using MainModel = LearnVocab.ViewModels.MainModel;
-using MainPage = LearnVocab.Pages.MainPage;
+using HomeModel = LearnVocab.ViewModels.HomeModel;
+using HomePage = LearnVocab.Pages.HomePage;
 
 namespace LearnVocab;
 
@@ -66,6 +66,7 @@ public class App : Application
         views.Register(
             new ViewMap(ViewModel: typeof(ShellModel)),
             new ViewMap<MainPage, MainModel>(),
+            new ViewMap<HomePage, HomeModel>(),
             new ViewMap<VocabPage, VocabModel>(),
             new DataViewMap<FolderPage, FolderModel, Vocab>()
         );
@@ -74,15 +75,20 @@ public class App : Application
             new RouteMap("", View: views.FindByViewModel<ShellModel>(),
                 Nested:
                 [
-                    new RouteMap("Main", View: views.FindByViewModel<MainModel>()),
-                    new RouteMap("Folder", View: views.FindByViewModel<FolderModel>()),
-                    new RouteMap("Vocab", View: views.FindByViewModel<VocabModel>())
+                    new RouteMap("Main", View: views.FindByViewModel<MainModel>(),
+                        Nested:
+                        [
+                            new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
+                            new RouteMap("Folder", View: views.FindByViewModel<FolderModel>()),
+                            new RouteMap("Vocab", View: views.FindByViewModel<VocabModel>()),
+                        ]
+                    ),
                 ]
             )
-            // new RouteMap("", View: views.FindByView<MainPage>(),
+            // new RouteMap("", View: views.FindByView<HomePage>(),
             //     Nested:
             //     [
-            //         new RouteMap("Mains", View: views.FindByView<MainPage>()),
+            //         new RouteMap("Mains", View: views.FindByView<HomePage>()),
             //         new RouteMap("Seconds", View: views.FindByView<SecondPage>()),
             //         new RouteMap("Vocabs", View: views.FindByView<VocabPage>())
             //     ]
