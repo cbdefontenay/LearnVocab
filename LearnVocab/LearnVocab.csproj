@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Uno.Toolkit.WinUI.Material.Markup" />
     <PackageReference Include="Uno.WinUI" />
     <PackageReference Include="Uno.WinUI.Lottie" />
     <PackageReference Include="Uno.WinUI.DevServer" Condition="'$(Configuration)'=='Debug'" />

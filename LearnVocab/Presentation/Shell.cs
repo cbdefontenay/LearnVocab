@@ -31,11 +31,11 @@ public sealed partial class Shell : UserControl, IContentControlProvider
         ContentControl = splash;
     }
 
-    private Task GoToVocabPage() => _navigator.NavigateViewAsync<SecondPage>(this);
+    private Task GoToVocabPage() => _navigator.NavigateViewAsync<FolderPage>(this);
 
     private async Task GoToSecondPage()
     {
-        await _navigator.NavigateViewAsync<SecondPage>(this);
+        await _navigator.NavigateViewAsync<FolderPage>(this);
     }
 
     private async Task ConfigureProperty()

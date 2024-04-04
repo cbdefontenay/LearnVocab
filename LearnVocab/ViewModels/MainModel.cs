@@ -20,19 +20,9 @@ public partial record MainModel
         await _navigator.NavigateViewAsync<MainPage>(this);
     }
 
-    public async Task GoToSecondPage()
-    {
-        await _navigator.NavigateViewAsync<SecondPage>(this);
-    }
-
-    public async Task GoToVocabPage()
-    {
-        await _navigator.NavigateViewAsync<VocabPage>(this);
-    }
-
     public async Task GoToSecond()
     {
         var name = await Name;
-        await _navigator.NavigateViewModelAsync<SecondModel>(this, data: new Vocab(name!));
+        await _navigator.NavigateViewModelAsync<FolderModel>(this, data: new Vocab(name!));
     }
 }

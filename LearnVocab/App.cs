@@ -1,8 +1,6 @@
 using LearnVocab.Models;
 using MainModel = LearnVocab.ViewModels.MainModel;
 using MainPage = LearnVocab.Pages.MainPage;
-using SecondModel = LearnVocab.ViewModels.SecondModel;
-using SecondPage = LearnVocab.Pages.SecondPage;
 
 namespace LearnVocab;
 
@@ -69,7 +67,7 @@ public class App : Application
             new ViewMap(ViewModel: typeof(ShellModel)),
             new ViewMap<MainPage, MainModel>(),
             new ViewMap<VocabPage, VocabModel>(),
-            new DataViewMap<SecondPage, SecondModel, Vocab>()
+            new DataViewMap<FolderPage, FolderModel, Vocab>()
         );
 
         routes.Register(
@@ -77,7 +75,7 @@ public class App : Application
                 Nested:
                 [
                     new RouteMap("Main", View: views.FindByViewModel<MainModel>()),
-                    new RouteMap("Second", View: views.FindByViewModel<SecondModel>()),
+                    new RouteMap("Folder", View: views.FindByViewModel<FolderModel>()),
                     new RouteMap("Vocab", View: views.FindByViewModel<VocabModel>())
                 ]
             )

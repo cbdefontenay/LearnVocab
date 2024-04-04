@@ -8,7 +8,7 @@ public sealed partial class MainPage : Page
             .NavigationCacheMode(NavigationCacheMode.Required)
             .Content(new Grid()
                 .Region(attached: true)
-                .SafeArea(SafeArea.InsetMask.Bottom)
+                .SafeArea(SafeArea.InsetMask.None)
                 .RowDefinitions("Auto,*")
                 .Children(
                     new NavigationBar()
@@ -27,10 +27,11 @@ public sealed partial class MainPage : Page
                         .Spacing(16)
                         .Children(
                             new TextBox()
-                                .Text(x => x.Bind(() => vm.Name).Mode(BindingMode.TwoWay))
-                                .PlaceholderText("Enter your names:"),
+                                .Text(x => x.Bind(() => vm.Name).Mode(BindingMode.TwoWay)
+                                )
+                                .PlaceholderText("Enter your Folder name:"),
                             new Button()
-                                .Content("Go to Second Page")
+                                .Content("Go to Folder Page")
                                 .AutomationProperties(automationId: "SecondPageButton")
                                 .Command(() => vm.GoToSecond)
                         ),
@@ -42,8 +43,8 @@ public sealed partial class MainPage : Page
                             new TabBarItem().Content("Home")
                                 .Region().Name("Main")
                                 .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle")),
-                            new TabBarItem().Content("Second")
-                                .Region().Name("Second")
+                            new TabBarItem().Content("Folder")
+                                .Region().Name("Folder")
                                 .Style(StaticResource.Get<Style>("MaterialBottomTabBarItemStyle")),
                             new TabBarItem().Content("Vocab")
                                 .Region().Name("Vocab")

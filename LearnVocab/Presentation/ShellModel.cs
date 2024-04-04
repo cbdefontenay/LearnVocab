@@ -18,7 +18,7 @@ public partial class ShellModel
 
     public async Task GoToSecondPage()
     {
-        await _navigator.NavigateViewAsync<SecondPage>(this);
+        await _navigator.NavigateViewAsync<FolderPage>(this);
     }
 
     public async Task GoToVocabPage()
