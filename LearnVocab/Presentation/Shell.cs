@@ -1,4 +1,4 @@
-﻿namespace LearnVocab.Presentation;
+namespace LearnVocab.Presentation;
 
 public sealed partial class Shell : UserControl, IContentControlProvider
 {
@@ -40,7 +40,7 @@ public sealed partial class Shell : UserControl, IContentControlProvider
 
     private async Task ConfigureProperty()
     {
-        await _navigator.NavigateViewAsync<MainPage>(this);
+        await _navigator.NavigateViewAsync<HomePage>(this);
     }
 
     public ContentControl ContentControl { get; }
