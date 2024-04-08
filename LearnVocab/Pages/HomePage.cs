@@ -13,28 +13,31 @@ public sealed partial class HomePage : Page
                 .Children(
                     new NavigationBar()
                         .Content(() => vm.Title)
-                        .MainCommand(new AppBarButton()
-                            .Icon(new BitmapIcon().UriSource(
-                                    new Uri("ms-appx:///LearnVocab/Assets/Icons/home.png")
+                        .MainCommand(
+                            new AppBarButton()
+                                .Icon(
+                                    new BitmapIcon()
+                                        .UriSource(
+                                            new Uri("ms-appx:///LearnVocab/Assets/Icons/home.png")
+                                        )
                                 )
-                            )
-                        ),
-                    new StackPanel()
-                        .Grid(row: 0)
-                        .Margin(margin: new Thickness(0, 100))
-                        .HorizontalAlignment(HorizontalAlignment.Center)
-                        .VerticalAlignment(VerticalAlignment.Center)
-                        .Spacing(16)
-                        .Children(
-                            new TextBox()
-                                .Text(x => x.Bind(() => vm.Name).Mode(BindingMode.TwoWay)
-                                )
-                                .PlaceholderText("Enter your Folder name:"),
-                            new Button()
-                                .Content("Go to Folder Page")
-                                .AutomationProperties(automationId: "SecondPageButton")
-                                .Command(() => vm.GoToSecond)
                         )
+                    // new StackPanel()
+                    //     .Grid(row: 0)
+                    //     .Margin(margin: new Thickness(0, 100))
+                    //     .HorizontalAlignment(HorizontalAlignment.Center)
+                    //     .VerticalAlignment(VerticalAlignment.Center)
+                    //     .Spacing(16)
+                    //     .Children(
+                    //         new TextBox()
+                    //             .Text(x => x.Bind(() => vm.Name).Mode(BindingMode.TwoWay)
+                    //             )
+                    //             .PlaceholderText("Enter your Folder name:"),
+                    //         new Button()
+                    //             .Content("Go to Folder Page")
+                    //             .AutomationProperties(automationId: "SecondPageButton")
+                    //             .Command(() => vm.GoToSecond)
+                    //     )
                 )
             )
         );

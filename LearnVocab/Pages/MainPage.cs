@@ -1,5 +1,3 @@
-using ToolkitTheme = Uno.Toolkit.UI.Markup.Theme;
-
 namespace LearnVocab.Pages;
 
 public sealed partial class MainPage : Page
@@ -10,7 +8,7 @@ public sealed partial class MainPage : Page
             .NavigationCacheMode(NavigationCacheMode.Required)
             .Content(new Grid()
                 .Region(attached: true)
-                .SafeArea(SafeArea.InsetMask.None)
+                .SafeArea(SafeArea.InsetMask.VisibleBounds)
                 .RowDefinitions("*,Auto")
                 .Children(
                     new Grid()
@@ -20,11 +18,11 @@ public sealed partial class MainPage : Page
                         .Region(attached: true)
                         .Style(ToolkitTheme.TabBar.Styles.Bottom)
                         .Items(
-                            new TabBarItem().Content("Home")
+                            new TabBarItem().Content(() => vm._firstTabPage)
                                 .Region(name: "Home"),
-                            new TabBarItem().Content("Folder")
+                            new TabBarItem().Content(() => vm._secondTabPage)
                                 .Region(name: "Folder"),
-                            new TabBarItem().Content("Vocab")
+                            new TabBarItem().Content(() => vm._thirdTabPage)
                                 .Region(name: "Vocab")
                         )
                 )

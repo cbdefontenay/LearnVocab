@@ -20,9 +20,9 @@ public partial record HomeModel
         await _navigator.NavigateViewAsync<HomePage>(this);
     }
 
-    public async Task GoToSecond()
-    {
-        var name = await Name;
-        await _navigator.NavigateViewModelAsync<FolderModel>(this, data: new Vocab(name!));
-    }
+    // public async Task GoToSecond()
+    // {
+    //     var name = await Name;
+    //     await _navigator.NavigateViewModelAsync<FolderModel>(this, data: new Vocab(name!));
+    // }
 }

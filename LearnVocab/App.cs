@@ -68,6 +68,7 @@ public class App : Application
             new ViewMap<MainPage, MainModel>(),
             new ViewMap<HomePage, HomeModel>(),
             new ViewMap<VocabPage, VocabModel>(),
+            new ViewMap<PopUpPage, PopUpModel>(),
             new DataViewMap<FolderPage, FolderModel, Vocab>()
         );
 
@@ -81,6 +82,7 @@ public class App : Application
                             new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
                             new RouteMap("Folder", View: views.FindByViewModel<FolderModel>()),
                             new RouteMap("Vocab", View: views.FindByViewModel<VocabModel>()),
+                            new RouteMap("Popup", View: views.FindByViewModel<PopUpModel>()),
                         ]
                     ),
                 ]
