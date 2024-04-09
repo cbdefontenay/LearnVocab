@@ -1,22 +1,15 @@
 namespace LearnVocab.ViewModels;
 
-public partial record FolderModel
+public partial record FolderModel(INavigator Navigator, Vocab NewVocab)
 {
-    private readonly INavigator _navigator;
+    public string Title { get; set; } = "Folder";
+    public  string Label { get; set; } = "Create List";
 
-    public FolderModel(INavigator navigator)
-    {
-        _navigator = navigator;
-        Title = "Folder";
-    }
-
-    public string Title { get; set; }
-
-    public IState<string> NewFolderName => State<string>.Value(this, () => "");
+    public IState<string> NewFolderName => State<string>.Value(this, () => string.Empty);
 
     public async Task CreateList()
     {
-        await _navigator.NavigateViewModelAsync<PopUpModel>(this);
+        await Navigator.NavigateViewModelAsync<PopUpModel>(this, qualifier: Qualifiers.ClearBackStack);
     }
 
     public async Task CreateFolder()

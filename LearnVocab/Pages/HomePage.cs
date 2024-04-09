@@ -22,22 +22,6 @@ public sealed partial class HomePage : Page
                                         )
                                 )
                         )
-                    // new StackPanel()
-                    //     .Grid(row: 0)
-                    //     .Margin(margin: new Thickness(0, 100))
-                    //     .HorizontalAlignment(HorizontalAlignment.Center)
-                    //     .VerticalAlignment(VerticalAlignment.Center)
-                    //     .Spacing(16)
-                    //     .Children(
-                    //         new TextBox()
-                    //             .Text(x => x.Bind(() => vm.Name).Mode(BindingMode.TwoWay)
-                    //             )
-                    //             .PlaceholderText("Enter your Folder name:"),
-                    //         new Button()
-                    //             .Content("Go to Folder Page")
-                    //             .AutomationProperties(automationId: "SecondPageButton")
-                    //             .Command(() => vm.GoToSecond)
-                    //     )
                 )
             )
         );

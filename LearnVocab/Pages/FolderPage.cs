@@ -18,20 +18,20 @@ public sealed partial class FolderPage : Page
                             .Content(() => vm.Title)
                             .MainCommand(new AppBarButton()
                                 .Icon(new BitmapIcon()
-                                    .UriSource(new Uri("ms-appx:///LearnVocab/Assets/Icons/home.png")
+                                    .UriSource(new Uri("ms-appx:///LearnVocab/Assets/Icons/home.svg")
                                     )
                                 )
                             )
                             .SecondaryCommands(new AppBarButton().Label("Create Folder"),
                                 new AppBarButton()
-                                    .Label("Create List")
+                                    .Label(() => vm.Label)
                                     .Command(() => vm.CreateList)
                             ),
                         new AutoLayout()
                             .Children(
                                 new TextBlock()
                                     .Margin(margin: new Thickness(0, 100, 0, 0))
-                                    .Text(() => vm.Title)
+                                    .Text(() => vm.NewVocab.NewVocab)
                             )
                     )
             )

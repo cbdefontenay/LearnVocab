@@ -1,4 +1,3 @@
-using LearnVocab.Models;
 using HomeModel = LearnVocab.ViewModels.HomeModel;
 using HomePage = LearnVocab.Pages.HomePage;
 
@@ -14,6 +13,7 @@ public class App : Application
         var builder = this.CreateBuilder(args)
             // Add navigation support for toolkit controls such as TabBar and NavigationView
             .UseToolkitNavigation()
+            
             .Configure(host => host
 #if DEBUG
                 // Switch to Development environment when running in DEBUG
@@ -42,7 +42,7 @@ public class App : Application
                     //// Binder memory references tracking
                     //logBuilder.BinderMemoryReferenceLogLevel(LogLevel.Debug);
                     //// DevServer and HotReload related
-                    //logBuilder.HotReloadCoreLogLevel(LogLevel.Information);
+                    // logBuilder.HotReloadCoreLogLevel(LogLevel.Information);
                     //// Debug JS interop
                     //logBuilder.WebAssemblyLogLevel(LogLevel.Debug);
                 }, enableUnoLogging: true)
@@ -56,9 +56,13 @@ public class App : Application
 
 #if DEBUG
         MainWindow.EnableHotReload();
+
+
 #endif
 
         Host = await builder.NavigateAsync<Shell>();
+        
+        
     }
 
     private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
@@ -87,14 +91,6 @@ public class App : Application
                     ),
                 ]
             )
-            // new RouteMap("", View: views.FindByView<HomePage>(),
-            //     Nested:
-            //     [
-            //         new RouteMap("Mains", View: views.FindByView<HomePage>()),
-            //         new RouteMap("Seconds", View: views.FindByView<SecondPage>()),
-            //         new RouteMap("Vocabs", View: views.FindByView<VocabPage>())
-            //     ]
-            // )
         );
     }
 }

@@ -17,8 +17,9 @@ public partial record PopUpModel
         await _navigator.NavigateViewModelAsync<FolderModel>(this, data: new Vocab(newFolder!));
     }
 
-    public Task GoBackToFolderPage()
+
+    public async Task GoBackToFolderPage()
     {
-        return _navigator.NavigateBackAsync(this);
+        await _navigator.NavigateBackAsync(this);
     }
 }
